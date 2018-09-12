@@ -24,6 +24,7 @@ class BeerSong
 
 =end
 
+
   def verse(nombre)
   	if nombre >= 3
 			"#{nombre} bottles of beer on the wall, #{nombre} bottles of beer.\n" \
@@ -38,7 +39,22 @@ class BeerSong
 			"No more bottles of beer on the wall, no more bottles of beer.\n" \
       "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
   	end
+	end
 
+	def verses(n1, n2)
+		if n1-1 == n2
+				verse(n1) +"\n"+ verse(n2)
+		elsif n1-2 == n2
+			verse(n1) +"\n"+ verse(n1-1) +"\n"+ verse(n1-2)
+		end 
+	end
+
+	def lyrics
+		song_start = "<<-SONG \n"
+		song_end = "SONG"
+		song_body = ""
+		song_body = 99.downto(0) { |n|  return verse(n) }
+		song = song_start << song_body << song_end
 	end
 end
 
