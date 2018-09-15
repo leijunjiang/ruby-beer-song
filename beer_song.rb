@@ -1,29 +1,8 @@
-#!/usr/bin/env ruby
+
 class BeerSong
 
 	def initialize
 	end
-=begin
-	@@var1 = 99
-	@@var2 = 98
-
-
-	#def onesong(n)
-	#	puts "#{n} bottles of beer on the wall, #{n} bottles of beer.
-	#	Take one down and pass it around, #{n-1} bottles of beer on the wall."
-	#end
-  @@i = 99
-
-  		while @@i > 0 do
-		   puts "#{@@var1} bottles of beer on the wall, #{@@var1} bottles of beer.
-			Take one down and pass it around, #{@@var2} bottles of beer on the wall."
-		   @@i = @@i - 1
-		   @@var1 -= 1
-			 @@var2 -= 1
-				end	
-
-=end
-
 
   def verse(nombre)
   	if nombre >= 3
@@ -46,17 +25,23 @@ class BeerSong
 				verse(n1) +"\n"+ verse(n2)
 		elsif n1-2 == n2
 			verse(n1) +"\n"+ verse(n1-1) +"\n"+ verse(n1-2)
-		end 
+		end
 	end
 
 	def lyrics
-		song_start = "<<-SONG \n"
-		song_end = "SONG"
-		song_body = ""
-		song_body = 99.downto(0) { |n|  return verse(n) }
-		song = song_start << song_body << song_end
+		#song_end = "    SONG"
+		#song_body = "<<-SONG "
+		@song_body = verse(99)
+		@i = 98
+		while @i >= 0 do
+			@song_body = @song_body + "\n" + verse(@i)
+			@i = @i-1
+		end
+		#song = song_start << song_body #<< song_end
+		return @song_body
 	end
 end
 
-
-
+class BookKeeping
+	VERSION = 2
+end
